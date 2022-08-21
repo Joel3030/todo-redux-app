@@ -1,0 +1,18 @@
+<!-- `editing` `completed`-->
+
+<ng-container [formGroup]="todoItemFormGroup">
+  <li [ngClass]="{ completed: todo.done, editing: editing }">
+    <div class="view">
+      <input class="toggle" type="checkbox" formControlName="done" />
+      <label (dblclick)="edit()">{{ todo.text }}</label>
+      <button class="destroy" (click)="remove()"></button>
+    </div>
+    <input
+      #text
+      class="edit"
+      type="text"
+      formControlName="text"
+      (blur)="finishEditing()"
+    />
+  </li>
+</ng-container>
